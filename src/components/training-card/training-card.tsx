@@ -24,19 +24,18 @@ export class TrainingCard {
 
 
     render() {
+
         return (
             <div class="card">
-                <img class="heroImg" src={getAssetPath(`./assets/${this.imgurl}`)} alt={this.imgalt}/>
+                {this.imgurl ? <img class="heroImg" src={getAssetPath(`./assets/${this.imgurl}`)} alt={this.imgalt}/> : null}
                 <div class="cardContent">
-
-                    <h1>{this.header}</h1>
-                    <h4>{this.sub}</h4>
-                    <p>{this.body}</p>
+                    {this.header ? <h3>{this.header}</h3> : null}
+                    {this.sub ? <h5>{this.sub}</h5> : null}
+                    {this.body ? <slot>{this.body}</slot> : null}
                     <a href={this.linkurl} target={this.linktarget} class="learnMoreBtn">
                         <span>{this.linkLabel}</span>
                         <img class="arrow" src={getAssetPath(`./assets/${this.linkArrow}`)}/>
                     </a>
-                    
                 </div>
             </div>
         )
